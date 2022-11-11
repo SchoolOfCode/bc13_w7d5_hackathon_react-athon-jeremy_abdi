@@ -1,24 +1,37 @@
 import React, {useState} from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 import './index.css';
 
+const DEFAULT_INPUT_STATE = ""
+
 export default function Input (props) {
+    const { addTodo } = props
+    const [ userInput, setUserInput ] = useState(DEFAULT_INPUT_STATE);
 
-    const [ userInput, setUserInput ] = useState('');
-
-    const addMore= (e) => {
-        setUserInput(e.currentTarget.value)
+    const handleInputChange = (event) => {
+        setUserInput(event.target.value)
     }
     
-    const handleSubmit = (e) => {
-        props.addItems(userInput);
-        setUserInput("");
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        if(userInput !== DEFAULT_INPUT_STATE) {
+            addTodo({ item: userInput, id: uuidv4() });
+            setUserInput(DEFAULT_INPUT_STATE);
+        }
+        
     }
+
     return (
-        <div onSubmit={handleSubmit}>
-            <input value={userInput} type="text" onChange={addMore} placeholder="Enter task..."/>
-            <button>Submit</button>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <input
+                value={userInput}
+                type="text"
+                onChange={handleInputChange}
+                placeholder="Enter task..."
+            />
+            <button type="submit">Submit</button>
+        </form>
     );
 };
 

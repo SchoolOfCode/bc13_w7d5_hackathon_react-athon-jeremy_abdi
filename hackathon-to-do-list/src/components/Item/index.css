@@ -1,0 +1,12 @@
+.delete-button {
+    margin-left: 10px;
+    padding: 2px 4px;
+    border-radius: 6px;;
+    background-color: red;
+    color: white;
+}
+
+.todo-item {
+    font-size: 18px;
+    margin: 8px;
+}
