@@ -10,5 +10,4 @@ export default function List(props) {
            )
 }
 
-<ul className="todo-list">
         

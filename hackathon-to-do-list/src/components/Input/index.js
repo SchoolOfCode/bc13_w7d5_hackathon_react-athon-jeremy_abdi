@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from "react";
 
 import './index.css';
 
-export default function Input (props) => {
+export default function Input (props) {
 
     const [ userInput, setUserInput ] = useState('');
 
@@ -16,7 +16,7 @@ export default function Input (props) => {
     }
     return (
         <div onSubmit={handleSubmit}>
-            <input value={userInput} type="text" onChange={props.addMore} placeholder="Enter task..."/>
+            <input value={userInput} type="text" onChange={addMore} placeholder="Enter task..."/>
             <button>Submit</button>
         </div>
     );
