@@ -1,11 +1,28 @@
 import React from 'react';
 
 import './index.css';
-export default function Input (props) {
-    const [items, setItems] = useState("");
-    // const postElement = posts.map(post=>{
-return <List/> 
-}
+
+export default function Input (props) => {
+
+    const [ userInput, setUserInput ] = useState('');
+
+    const addMore= (e) => {
+        setUserInput(e.currentTarget.value)
+    }
+    
+    const handleSubmit = (e) => {
+        props.addItems(userInput);
+        setUserInput("");
+    }
+    return (
+        <div onSubmit={handleSubmit}>
+            <input value={userInput} type="text" onChange={props.addMore} placeholder="Enter task..."/>
+            <button>Submit</button>
+        </div>
+    );
+};
+
+
 
 
 // export default function Input(props) {
